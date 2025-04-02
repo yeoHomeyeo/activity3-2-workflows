@@ -1,12 +1,9 @@
-provider "aws" {
-  region = "us-east-1"
-}
-
 terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 5.83.1" # or your desired version constraint
+      region = "us-east-1"
     }
   }
 }
@@ -22,7 +19,7 @@ terraform {
 data "aws_caller_identity" "current" {}
 
 locals {
-  name_prefix = split("/", "${data.aws_caller_identity.current.arn}")[1]
+  name_prefix = split("/", data.aws_caller_identity.current.arn)[1]
   account_id  = data.aws_caller_identity.current.account_id
 }
 
