@@ -3,7 +3,7 @@ terraform {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 5.83.1" # or your desired version constraint
-      region = "us-east-1"
+      region  = "us-east-1"
     }
   }
 }
