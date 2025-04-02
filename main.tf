@@ -1,19 +1,21 @@
+provider "aws" {
+  region = "us-east-1"
+}
+
 terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.83.1" # or your desired version constraint
-      region  = "us-east-1"
+      version = "~> 5.83.1"
     }
   }
-}
 
-terraform {
   backend "s3" {
     bucket = "sctp-ce9-tfstate"
-    key    = "chrisy-s3-tf-ci.tfstate" #Change this
+    key    = "chrisy-s3-tf-ci.tfstate"
     region = "us-east-1"
   }
+  required_version = ">= 1.0"
 }
 
 data "aws_caller_identity" "current" {}
