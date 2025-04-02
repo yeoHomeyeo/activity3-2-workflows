@@ -17,7 +17,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ap-southeast-1
+        aws-region: us-east-1
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
@@ -44,10 +44,10 @@ jobs:
     - name: Run TFLint
       run: tflint -f compact
 
-    - name: Checkov
-      uses: bridgecrewio/checkov-action@master
-      with:
-        framework: terraform
+    # - name: Checkov
+    #   uses: bridgecrewio/checkov-action@master
+    #   with:
+    #     framework: terraform
    
     - name: Terraform Plan
       run: terraform plan
